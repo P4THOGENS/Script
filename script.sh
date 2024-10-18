@@ -15,7 +15,7 @@ while true; do
         if [[ "$OSTYPE" == "linux-gnu"* ]]; then
             find /home/saadomar123/Script/sounds -type f -name "*.mp3" | shuf -n 1 | xargs -I{} mpg123 {}
         elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
-            find "C:\Users\salshekhom\Downloads\Script\sounds" -type f -name "*.mp3" | shuf -n 1 | xargs -I{} powershell -c "Start-Process {} -NoNewWindow"
+            find "C:\Users\salshekhom\Downloads\Script\sounds" -type f -name "*.mp3" | shuf -n 1 | xargs -I{} powershell -c "Start-Process -FilePath \"{}\" -NoNewWindow"
         else
             echo "Unsupported OS"
         fi
@@ -28,4 +28,5 @@ while true; do
         echo "Invalid option. Please choose 1, 2, or 3."
     fi
 done
+
 
