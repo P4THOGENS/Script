@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 while true; do
     echo "Hello, please choose 1 option"
     echo "(1) Type anything and it will show in the terminal"
@@ -8,14 +7,18 @@ while true; do
     echo "(3) Exit"
     read -p "Enter your choice: " option
 
-    
     if [ "$option" == "1" ]; then
         read -p "Type anything: " text
         echo "$text"
-        
+
     elif [ "$option" == "2" ]; then
-        
-        find /home/saadomar123/Script/sounds -type f -name "*.mp3" | shuf -n 1 | xargs -I{} mpg123 {}
+        if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+            find /home/saadomar123/Script/sounds -type f -name "*.mp3" | shuf -n 1 | xargs -I{} mpg123 {}
+        elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+            find "C:\Users\salshekhom\Downloads\Script\sounds" -type f -name "*.mp3" | shuf -n 1 | xargs -I{} mpg123 {}
+        else
+            echo "Unsupported OS"
+        fi
 
     elif [ "$option" == "3" ]; then
         echo "Goodbye!"
